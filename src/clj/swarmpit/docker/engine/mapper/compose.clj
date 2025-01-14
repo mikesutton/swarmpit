@@ -7,7 +7,7 @@
             [swarmpit.yaml :refer [->yaml]])
   (:refer-clojure :exclude [alias]))
 
-(def compose-version "3.3")
+(def compose-version "3.8")
 
 (defn group
   [stack-name fn coll]
