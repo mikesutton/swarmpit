@@ -955,7 +955,7 @@
       (assoc-in [:Labels] (:Labels service-delta))
       (assoc-in [:TaskTemplate :LogDriver :Options] (get-in service-delta [:TaskTemplate :LogDriver :Options]))))
 
-(defn update-service
+defn update-service
   [owner service-id service]
   (let [standardized-service (standardize-service owner service)
         service-origin (-> (dc/service service-id) :Spec)
@@ -1055,12 +1055,7 @@
 
 (defn labels-service
   []
-  (->> (services)
-       (map #(->> % :labels
-                  (map :name)
-                  (map str/trim)
-                  (set)))
-       (apply clojure.set/union)))
+  (resp-ok (api/labels-service)))
 
 ;; Plugin API
 
